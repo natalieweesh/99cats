@@ -1,0 +1,14 @@
+<h1>All the Cats you may rent</h1>
+<ul>
+  <% @all_cats.each do |cat| %>
+  <li>
+    Name: <%= cat.name %>
+  </li>
+  <ul>
+    <li>Age: <%= cat.age %></li>
+    <li>Birth Date: <%= cat.birth_date%></li>
+    <li>Color: <%= cat.color%></li>
+    <li>Sex: <%= cat.sex%></li>
+  </ul>
+  <% end %>
+</ul>

@@ -1,0 +1,42 @@
+<%= form_for @cat, url: cats_path do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :age %>
+<%= f.text_field :age %>
+
+<%= f.label :sex %>
+<%= f.text_field :sex %>
+
+<label for="cat_birth_date">Birth Date</label>
+<input type="date" name="cat[birth_date]" id="cat_birth_date">
+
+<%= f.label :color %>
+<%= f.select :color, options_for_select([ ["Infrared", "Infrared"], ["Red", "Red"], ["Orange", "Orange"], ["Yellow", "Yellow"], ["Green", "Green"], ["Blue", "Blue"], ["Indigo", "Indigo"], ["Violet", "Violet"], ["Ultraviolet", "Ultraviolet"]  ], :color)   %>
+
+<%= f.submit "Continue" %>
+<% end %>
+
+<!-- <form action="<%= cats_path %>" method="post"> -->
+<!--   <label for="cat_name">Name</label>
+  <input type="text" name="cat[name]" id="cat_name" value="<%= params["cat"] %>">
+  <label for="cat_age">Age</label>
+  <input type="text" name="cat[age]" id="cat_age" value="<%=  %>">
+  <label for="cat_color">Cat color</label>
+  <select name="cat[color]">
+    <option value="infrared">Infrared</option>
+    <option value="red">Red</option>
+    <option value="orange">Orange</option>
+    <option value="yellow">Yellow</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+    <option value="indigo">Indigo</option>
+    <option value="violet">Violet</option>
+    <option value="ultraviolet">Ultraviolet</option>
+  </select>
+  <label for="cat_sex">Sex</label>
+  <input type="text" name="cat[sex]" id="cat_sex" value="<%=  %>">
+  <label for="cat_birth_date">Birth Date</label>
+  <input type="date" name="cat[birth_date]" id="cat_birth_date" value="<%=  %>">
+  <input type="submit" value="Create Cat">
+</form> -->
