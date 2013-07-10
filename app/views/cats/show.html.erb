@@ -14,19 +14,19 @@
 
     <% if request.status == "undecided" %>
     <li>
-      <%= form_for(@cat_rental_request, url: cat_rental_request_path, as: :put, method: :put) do |f| %>
 
-        <input type="hidden" name="cat_rental_request[id]" value="<%= request.id %>">
-        <%= f.radio_button :status, "approve#{request.id}" %>
-        <%= f.label :status, "Approve", :value => "approve#{request.id}"%>
-
-        <%= f.radio_button :status, "deny#{request.id}" %>
-        <%= f.label :status, "Deny", :value => "deny#{request.id}"%>
+      <form action="<%=cat_rental_request_path(request.id)%>" method="post">
 
 
-        <%= f.submit "submit"%>
+        <label>Approve
+        <input type="radio" name="cat_rental_request[status]" value="approve"></label>
 
-      <% end %>
+        <label>Deny
+        <input type="radio" name="cat_rental_request[status]" value="deny"></label>
+
+        <input type="hidden" name="_method" value="put">
+        <input type="submit" value="submit">
+      </form>
     </li>
     <% end %>
   <% end%>

@@ -20,8 +20,12 @@ class CatRentalRequestsController < ApplicationController
   end
 
   def update
-    @request = CatRentalRequest.find(params["cat_rental_request"]["id"])
-    @request.send(params["cat_rental_request"]["status"])
-    render :json => "blah"
+    @request = CatRentalRequest.find(params[:id])
+    if params[:cat_rental_request][:status] ==  "deny"
+      @request.deny
+    else
+      @request.approve
+    end
+    redirect_to cat_url(@request.cat.id)
   end
 end
