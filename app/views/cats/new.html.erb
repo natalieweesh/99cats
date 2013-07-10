@@ -8,6 +8,14 @@
 <%= f.label :sex %>
 <%= f.text_field :sex %>
 
+<input type="hidden" name="cat[user_id]" value="<%=
+  User.find_by_token(session[:token]).id
+%>">
+
+<input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
 <label for="cat_birth_date">Birth Date</label>
 <input type="date" name="cat[birth_date]" id="cat_birth_date">
 

@@ -1,3 +1,6 @@
 class User < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :username, :password
+
+  validates :username, :uniqueness => { :scope => :password }
+
 end

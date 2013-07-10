@@ -1,4 +1,13 @@
 
+users = %w{Andy Bob}
+users.each do |name|
+  User.create(
+  username: name,
+  password: "password"
+  )
+end
+
+
 cats = %w{Anderonda Becky Catterpillar Dazzle Easy Frazzle}
 colors = %w{Infrared Red Orange Yellow Green Blue Indigo Violet Ultraviolet}
 
@@ -6,7 +15,8 @@ cats.each_with_index do |cat, index|
   Cat.create(
     name: cat,
     age: index,
-    color: colors[index]
+    color: colors[index],
+    user_id: 1
   )
 end
 

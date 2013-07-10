@@ -12,7 +12,8 @@
   <% @cat.cat_rental_requests.each do |request| %>
   <li>One <%= request.status %> request for <%= request.begin_date %> through <%= request.end_date %> </li>
 
-    <% if request.status == "undecided" %>
+    <% if request.status == "undecided" &&
+         @cat.user_id == User.find_by_token(session[:token]).id %>
     <li>
 
       <form action="<%=cat_rental_request_path(request.id)%>" method="post">
@@ -23,6 +24,10 @@
 
         <label>Deny
         <input type="radio" name="cat_rental_request[status]" value="deny"></label>
+
+        <input type="hidden"
+                 name="authenticity_token"
+                 value="<%= form_authenticity_token %>">
 
         <input type="hidden" name="_method" value="put">
         <input type="submit" value="submit">

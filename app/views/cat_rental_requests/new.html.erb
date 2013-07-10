@@ -1,7 +1,5 @@
 <%= form_for @cat_rental_request, url: cat_rental_requests_path do |f| %>
 
-<%#= f.label :cat_id %>
-<%#= f.number_field :cat_id %>
 
 <%= f.label :cat_id %>
 <%= f.select :cat_id, options_for_select(
@@ -15,6 +13,7 @@
 
 <label for="end_date">End Date</label>
 <input type="date" name="cat_rental_request[end_date]" id="end_date">
+
 
 <%= f.submit "Continue" %>
 <% end %>
