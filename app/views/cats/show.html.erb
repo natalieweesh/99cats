@@ -6,3 +6,28 @@
   <li>Color: <%= @cat.color%></li>
   <li>Sex: <%= @cat.sex%></li>
 </ul>
+
+<h2>Orders for <%= @cat.name %></h2>
+<ul>
+  <% @cat.cat_rental_requests.each do |request| %>
+  <li>One <%= request.status %> request for <%= request.begin_date %> through <%= request.end_date %> </li>
+
+    <% if request.status == "undecided" %>
+    <li>
+      <%= form_for(@cat_rental_request, url: cat_rental_request_path, as: :put, method: :put) do |f| %>
+
+        <input type="hidden" name="cat_rental_request[id]" value="<%= request.id %>">
+        <%= f.radio_button :status, "approve#{request.id}" %>
+        <%= f.label :status, "Approve", :value => "approve#{request.id}"%>
+
+        <%= f.radio_button :status, "deny#{request.id}" %>
+        <%= f.label :status, "Deny", :value => "deny#{request.id}"%>
+
+
+        <%= f.submit "submit"%>
+
+      <% end %>
+    </li>
+    <% end %>
+  <% end%>
+</ul>

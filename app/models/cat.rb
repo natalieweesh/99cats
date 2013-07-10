@@ -4,5 +4,6 @@ class Cat < ActiveRecord::Base
 
   validates :age, :presence => :true
 
+  has_many :cat_rental_requests, :dependent => :destroy
 
 end
